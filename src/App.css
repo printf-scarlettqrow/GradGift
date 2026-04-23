@@ -455,3 +455,121 @@ body, html, #root {
   25% { transform: translateX(-10px); }
   75% { transform: translateX(10px); }
 }
+
+/* Pantalla de Bloqueo Principal */
+.main-lock-screen {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+
+.main-login-card {
+  position: relative;
+  z-index: 10000;
+  width: 90%;
+  max-width: 450px;
+  background: #0a0a0a;
+  border: 1px solid rgba(163, 255, 0, 0.3);
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 0 100px rgba(0,0,0,1);
+}
+
+.system-header {
+  font-size: 0.7rem;
+  color: #a3ff00;
+  letter-spacing: 3px;
+  margin-bottom: 30px;
+  opacity: 0.8;
+}
+
+.blink {
+  animation: blink-animation 1s steps(2, start) infinite;
+  margin-right: 5px;
+}
+
+@keyframes blink-animation {
+  to { visibility: hidden; }
+}
+
+.main-login-card h2 {
+  font-size: 2.5rem;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+}
+
+.main-login-card p {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 40px;
+}
+
+.main-login-card input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 15px 60px 15px 15px; /* Padding derecho para el botón */
+  color: #fff;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 5px;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.toggle-pass-btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #a3ff00;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.toggle-pass-btn:hover {
+  opacity: 1;
+}
+
+.main-login-card input:focus {
+  border-color: #a3ff00;
+  background: rgba(163, 255, 0, 0.05);
+}
+
+.main-confirm-btn {
+  background: #a3ff00;
+  color: #000;
+  border: none;
+  padding: 15px 40px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.main-confirm-btn:hover {
+  background: #fff;
+  transform: scale(1.02);
+}

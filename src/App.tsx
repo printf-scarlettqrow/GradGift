@@ -2,6 +2,11 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [isMainUnlocked, setIsMainUnlocked] = useState(false);
+  const [mainPassword, setMainPassword] = useState('');
+  const [mainError, setMainError] = useState(false);
+  const [showMainPass, setShowMainPass] = useState(false);
+
   const [selectedChar, setSelectedChar] = useState<string | null>(null);
   const [password, setPassword] = useState('');
   const [unlocked, setUnlocked] = useState(false);
@@ -11,6 +16,16 @@ function App() {
     isra: 'PANZONTEA2026',
     dylan: 'DISCODYLAN2026',
     vale: 'CAPIWEKA2026'
+  };
+
+  const handleMainLogin = () => {
+    if (mainPassword.toUpperCase() === 'PAPUSGRADUADOS2026') {
+      setIsMainUnlocked(true);
+      setMainError(false);
+    } else {
+      setMainError(true);
+      setTimeout(() => setMainError(false), 2000);
+    }
   };
 
   const handleSelect = (char: string) => {
@@ -29,6 +44,48 @@ function App() {
       setTimeout(() => setError(false), 2000);
     }
   };
+
+  if (!isMainUnlocked) {
+    return (
+      <div className="app-container main-lock-screen">
+        <div className="film-grain"></div>
+        
+        <div className="main-login-card">
+          <div className="system-header">
+            <span className="blink">●</span> SECURE ACCESS SYSTEM v2.0
+          </div>
+          <h2>BIENVENID@</h2>
+          <p>INGRESE LA CLAVE DE ACCESO PARA CONTINUAR</p>
+          <div className="input-wrapper">
+            <input 
+              type={showMainPass ? "text" : "password"} 
+              value={mainPassword} 
+              onChange={(e) => setMainPassword(e.target.value)}
+              placeholder="CLAVE DE ACCESO"
+              className={mainError ? 'input-error' : ''}
+              onKeyDown={(e) => e.key === 'Enter' && handleMainLogin()}
+              autoFocus
+            />
+            <button 
+              className="toggle-pass-btn" 
+              onClick={() => setShowMainPass(!showMainPass)}
+              type="button"
+            >
+              {showMainPass ? "OCULTAR" : "VER"}
+            </button>
+          </div>
+          {mainError && <span className="error-msg">ACCESO DENEGADO - CLAVE INCORRECTA</span>}
+          <button className="main-confirm-btn" onClick={handleMainLogin}>
+            INICIAR SESIÓN
+          </button>
+        </div>
+
+        <footer className="footer-credits">
+          <p>IZZIWEBO • 2026</p>
+        </footer>
+      </div>
+    );
+  }
 
   return (
     <div className="app-container">
