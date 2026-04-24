@@ -48,7 +48,7 @@ function App() {
   const videoSources: Record<string, string> = {
     isra: 'ID_DE_YOUTUBE_AQUÍ',
     dylan: 'zmjCOHgWQ4Y',
-    vale: 'Ql_sOhZf2Ok'
+    vale: 'Dh7fvWnKZSM'
   };
 
   if (!isMainUnlocked) {
