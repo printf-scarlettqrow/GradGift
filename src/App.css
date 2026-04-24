@@ -423,16 +423,22 @@ body, html, #root {
   margin-bottom: 40px;
 }
 
-.video-placeholder {
+.video-container {
   width: 100%;
+  max-width: 900px;
   aspect-ratio: 16/9;
   background: #111;
-  border: 1px solid rgba(255,255,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255,255,255,0.2);
-  margin-bottom: 40px;
+  border: 1px solid rgba(163, 255, 0, 0.2);
+  margin: 0 auto 40px auto;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.victory-video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .back-btn {

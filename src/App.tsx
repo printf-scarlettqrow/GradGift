@@ -45,6 +45,12 @@ function App() {
     }
   };
 
+  const videoSources: Record<string, string> = {
+    isra: 'ID_DE_YOUTUBE_AQUÍ',
+    dylan: 'zmjCOHgWQ4Y',
+    vale: 'Ql_sOhZf2Ok'
+  };
+
   if (!isMainUnlocked) {
     return (
       <div className="app-container main-lock-screen">
@@ -184,11 +190,26 @@ function App() {
         <section className="unlocked-section">
           <div className="victory-content">
             <h2 className="victory-title">¡FELICIDADES!</h2>
-            <h3 className="victory-subtitle">HAS COMPLETADO EL VIAJE</h3>
-            <div className="video-placeholder">
-              <p>VIDEO DE {selectedChar?.toUpperCase()} PRÓXIMAMENTE...</p>
+            <h3 className="victory-subtitle">ESTE ES TU MOMENTO, {selectedChar?.toUpperCase()}</h3>
+            
+            <div className="video-container">
+              {selectedChar && (
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${videoSources[selectedChar]}?autoplay=1&rel=0`}
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="victory-video"
+                ></iframe>
+              )}
             </div>
-            <button className="back-btn" onClick={() => { setUnlocked(false); setSelectedChar(null); }}>VOLVER</button>
+
+            <button className="back-btn" onClick={() => { setUnlocked(false); setSelectedChar(null); }}>
+              VOLVER AL INICIO
+            </button>
           </div>
         </section>
       )}
